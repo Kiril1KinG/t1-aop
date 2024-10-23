@@ -25,7 +25,7 @@ public class UserService {
         return users.get(userId);
     }
 
-    public void updateUser(Long userId, UserDto dto) {
+    public User updateUser(Long userId, UserDto dto) {
         if (!users.containsKey(userId)){
             throw new UserNotFoundException(String.format("User with id %d not found", userId));
         }
@@ -41,6 +41,8 @@ public class UserService {
         if (dto.getPhone() != null) {
             user.setPhone(dto.getPhone());
         }
+
+        return user;
     }
 
     public void deleteUser(Long userId) {
